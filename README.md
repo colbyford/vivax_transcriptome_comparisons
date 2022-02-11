@@ -1,1 +1,1 @@
-# cambodian_vivax_transcriptomics
+# Comparison of African and Asian _P. vivax_ Transcriptomes.
