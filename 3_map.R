@@ -2,6 +2,7 @@ library(Rsubread)
 
 ## List all output filtered BAM files
 bam_files <- list.files("output", full.names=TRUE, pattern="\\_filtered.bam$")
+# bam_files <- list.files("output", full.names=TRUE, pattern="\\_output.bam$")
 
 ## Count gene features from P01 annotation
 feature_counts_iter <- featureCounts(bam_files,
