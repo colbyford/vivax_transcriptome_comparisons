@@ -16,6 +16,7 @@ bam_files <- list.files("output", full.names=TRUE, pattern="\\.bam$")
 
 ## Filter down to only P. vivax reads (MAPQ > 30)
 filter <- FilterRules(list(MinQuality = function(x) x$mapq > 30))
+# filter <- FilterRules(list(MinQuality = function(x) x$mapq > 0))
 
 ## Initialize filtering statistics dataframe
 filter_stats <- data.frame(file_original = character(0L),
