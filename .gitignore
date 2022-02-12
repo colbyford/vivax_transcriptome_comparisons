@@ -37,3 +37,10 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Remove files (that are too large)
+output/*.bam
+output/*.bam.bai
+output/*.sam
+output/*.ht2
+reads/*.fastq
