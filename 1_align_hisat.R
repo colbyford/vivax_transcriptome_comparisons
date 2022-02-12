@@ -16,10 +16,11 @@ for (i in seq_along(samples$SampleID)){
 
   reads <- as.list(samples[i, 2:3])
   
-  
-  hisat2(sequences=as.list(reads), index=file.path(dir, "vivax_index"),
-         type="paired", outfile=file.path(dir, paste0(samples$SampleID[i], "_output.sam")),
-         threads = parallel::detectCores()-1, force=TRUE, strict=TRUE, execute=TRUE)
-  
+  hisat2(sequences=reads,
+         index=file.path(dir, "vivax_index"),
+         type="paired",
+         outfile=file.path(dir, paste0(samples$SampleID[i], "_output.sam")),
+         threads = parallel::detectCores()-1,
+         force=TRUE, strict=TRUE, execute=TRUE)
 }
   
