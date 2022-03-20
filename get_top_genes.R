@@ -10,17 +10,17 @@ library(edgeR)
 ## Load in Data
 
 
-### Ethiopian Isolates (Ford, et al.)
+### Ethiopian Isolates
 cibersort_results <- read_csv('output/CIBERSORTx_Job3_Results.csv')
 gene_counts <- read.delim('output/feature_counts.csv', header = TRUE, sep = ",", row.names = "gene_id")
 
-### Cambodian Isolates (Sa, et al.)
+### Cambodian Isolates
 cibersort_results <- read_csv('output/CIBERSORTx_Job4_Results.csv')
 gene_counts <- read.delim('output/feature_counts.csv', header = TRUE, sep = ",", row.names = "gene_id")
 
 ### Maryland Set Isolates (Tebben, et al.)
-cibersort_results <- read_csv('one-to-one_test/pb_orthologsonly.txt/CIBERSORTx_Job15_Results.csv')
-gene_counts <- read.delim('one-to-one_test/pb_orthologsonly.txt/pb_orthologsonly_pvgenes.txt', header = TRUE, sep = "\t", row.names = "Gene")
+# cibersort_results <- read_csv('one-to-one_test/pb_orthologsonly.txt/CIBERSORTx_Job15_Results.csv')
+# gene_counts <- read.delim('one-to-one_test/pb_orthologsonly.txt/pb_orthologsonly_pvgenes.txt', header = TRUE, sep = "\t", row.names = "Gene")
 
 ## Convert data into DGEList
 y <- DGEList(counts=gene_counts)
@@ -42,7 +42,7 @@ plotBCV(y)
 ## 4.1.8 Differential Expression
 fit <- glmFit(y, design)
 lrt <- glmLRT(fit)
-topTags(lrt)
+topTags(lrt, n=30)
 
 
 fit_outputs <- lrt$table %>% 
