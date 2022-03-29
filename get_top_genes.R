@@ -31,6 +31,7 @@ y <- estimateCommonDisp(y)
 
 ## 4.1.6 Design Matrix (use Schizont percentages from CIBERSORTx)
 design <- model.matrix(~cibersort_results$Schizonts)
+design <- model.matrix(~cibersort_results$`Trophozoites 36`)
 rownames(design) <- colnames(y)
 
 ## 4.1.7 Estimate Dispersion
