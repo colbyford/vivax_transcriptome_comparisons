@@ -2,11 +2,13 @@
 
 library(dplyr)
 library(readxl)
+library(readr)
 library(tidyr)
 
-pd_ortho <- read_excel("pb_orthologsonly.txt/pb_orthologsonly_transpose.xlsx")
+# pd_ortho <- read_excel("pb_orthologsonly.txt/pb_orthologsonly_transpose.xlsx")
+pd_ortho <- read_csv("pb_orthologsonly.txt/pb_orthologsonly_pvgenes.csv")
 
-gene_ids <- colnames(pd_ortho)
+gene_ids <- colnames(pd_ortho %>% select(!Stage))
 
 pd_ortho_pvt <- pd_ortho %>% pivot_longer(!Stage, names_to = "gene_id")
 
