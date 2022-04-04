@@ -58,3 +58,34 @@ cpm(y)[o[1:10],]
 summary(decideTests(lrt))
 plotMD(lrt)
 abline(h=c(-1, 1), col="blue")
+
+#################################################
+
+## Transcript Lengths
+gene_lengths <- read_csv("refs/gene_lengths.csv") %>% 
+  filter(gene_id %in% row.names(gene_counts))
+
+### CPM Values
+cpms <- cpm(y) %>%
+  as.data.frame() %>% 
+  mutate(gene_id = row.names(.))
+write_csv(cpms, "output/feature_cpms.csv")
+
+### RPKM Values
+rpkms <- rpkm(y, gene.length = gene_lengths$width) %>%
+  as.data.frame() %>% 
+  mutate(gene_id = row.names(.))
+write_csv(rpkms, "output/feature_rpkms.csv")
+
+### TPM Values
+rpkms_to_tpms <- function(rpkms){
+  sum_rpkms <- sum(rpkms)
+  tpms <- (rpkms/sum_rpkms) * 10^6
+  
+  return(tpms)
+}
+
+tpms <- lapply(rpkms %>% dplyr::select(!gene_id), rpkms_to_tpms) %>%
+  as.data.frame() %>% 
+  mutate(gene_id = rpkms$gene_id)
+write_csv(tpms, "output/feature_tpms.csv")
