@@ -5,5 +5,6 @@
 
 Isolates:
 - Ethiopian Isolates: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA784582/
+- Brazilian Isolates: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA574970/
 - Cambodian Isolates: https://www.ebi.ac.uk/ena/browser/view/PRJEB32240?show=reads
 
