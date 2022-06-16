@@ -44,3 +44,4 @@ output/*.bam.bai
 output/*.sam
 output/*.ht2
 reads/*.fastq
+./.Rhistory
