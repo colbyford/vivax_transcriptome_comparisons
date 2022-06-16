@@ -1,1 +1,0 @@
-wget 'http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&rettype=runinfo&db=sra&term=	PRJNA603327' -O - | tee SraRunInfo.csv
